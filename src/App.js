@@ -16,7 +16,7 @@ function App() {
     }, []);
 
     const buscarTarefas = () => {
-        axios.get('http://localhost:3001/tarefas')
+        axios.get('https://tarefas-42xx.onrender.com/tarefas')
             .then(response => {
                 setTarefas(response.data);
             })
@@ -26,7 +26,7 @@ function App() {
     };
 
     const adicionarTarefa = () => {
-        axios.post('http://localhost:3001/tarefas', { titulo, descricao })
+        axios.post('https://tarefas-42xx.onrender.com/tarefas', { titulo, descricao })
             .then(response => {
                 setTarefas([...tarefas, response.data]);
                 setTitulo('');
@@ -39,7 +39,7 @@ function App() {
     };
 
     const deletarTarefa = (id) => {
-        axios.delete(`http://localhost:3001/tarefas/${id}`)
+        axios.delete(`https://tarefas-42xx.onrender.com/tarefas/${id}`)
             .then(() => {
                 setTarefas(tarefas.filter(tarefa => tarefa.id !== id));
                 window.alert('Tarefa deletada com sucesso!');
@@ -56,7 +56,7 @@ function App() {
     };
 
     const atualizarTarefa = (id) => {
-        axios.put(`http://localhost:3001/tarefas/${id}`, { titulo, descricao })
+        axios.put(`https://tarefas-42xx.onrender.com/tarefas/${id}`, { titulo, descricao })
             .then(() => {
                 setTarefas(tarefas.map(tarefa => tarefa.id === id ? { ...tarefa, titulo, descricao } : tarefa));
                 setTitulo('');
